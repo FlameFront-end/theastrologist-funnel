@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, type ChangeEvent } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
 import styles from './PalmGuideScreen.module.css'
 
-function StatusIcon({ wrong = false, circle = false }) {
+function StatusIcon({ wrong = false, circle = false }: { wrong?: boolean; circle?: boolean }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       {circle && <circle cx="12" cy="12" r="12" fill={wrong ? '#fa5252' : '#37b24d'} />}
@@ -11,7 +11,7 @@ function StatusIcon({ wrong = false, circle = false }) {
   )
 }
 
-function HandExample({ image, wrong = false, transform = 'none', large = false }) {
+function HandExample({ image, wrong = false, transform = 'none', large = false }: { image: string; wrong?: boolean; transform?: string; large?: boolean }) {
   return (
     <div className={styles.originalHandExample} data-large={large || undefined}>
       <img src={image} alt="" aria-hidden="true" style={{ transform }} />
@@ -20,18 +20,36 @@ function HandExample({ image, wrong = false, transform = 'none', large = false }
   )
 }
 
-export function PalmGuideScreen({ onContinue, onBack, progress }) {
-  const inputRef = useRef(null)
-  const [error, setError] = useState('')
+interface PalmGuideScreenProps {
+  onUpload: (file: File) => Promise<void>
+  onCamera: () => void
+  onSkip: () => void
+  onBack: () => void
+  progress: number
+  cameraAborted?: boolean
+}
 
-  const handleFile = event => {
+export function PalmGuideScreen({ onUpload, onCamera, onSkip, onBack, progress, cameraAborted = false }: PalmGuideScreenProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [error, setError] = useState('')
+  const [uploadAttempted, setUploadAttempted] = useState(false)
+  const [uploading, setUploading] = useState(false)
+
+  const handleFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.currentTarget.files?.[0]
     event.currentTarget.value = ''
     if (!file) return
-    if (!file.type.startsWith('image/') || file.size === 0) return setError('Выбери изображение ладони.')
-    if (file.size > 15 * 1024 * 1024) return setError('Изображение слишком большое.')
+    if (!file.type.startsWith('image/') || file.size === 0) return setError('Выбери корректный файл изображения.')
+    if (file.size > 15 * 1024 * 1024) return setError('Выбери изображение размером менее 15 МБ.')
     setError('')
-    onContinue(file)
+    setUploading(true)
+    try {
+      await onUpload(file)
+    } catch {
+      setError('Не удалось загрузить изображение. Попробуй ещё раз.')
+    } finally {
+      setUploading(false)
+    }
   }
 
   const tips = [
@@ -63,9 +81,10 @@ export function PalmGuideScreen({ onContinue, onBack, progress }) {
         </div>
         <div className={styles.originalPalmActions}>
           <input ref={inputRef} type="file" accept="image/*" hidden onChange={handleFile} />
-          <button className={styles.originalPalmUpload} type="button" onClick={() => inputRef.current?.click()}>Загрузить из галереи</button>
+          <button className={styles.originalPalmUpload} type="button" disabled={uploading} onClick={() => { setUploadAttempted(true); inputRef.current?.click() }}>{uploading ? 'Загружаем…' : 'Загрузить из галереи'}</button>
           {error && <p role="alert">{error}</p>}
-          <button className={styles.originalPalmCamera} type="button" onClick={() => onContinue(null)}><span>СДЕЛАТЬ ФОТО</span><b aria-hidden="true">◎</b></button>
+          <button className={styles.originalPalmCamera} type="button" onClick={onCamera}><span>СДЕЛАТЬ ФОТО</span><b aria-hidden="true">◎</b></button>
+          {(cameraAborted || uploadAttempted) && <button className={styles.originalPalmSkip} type="button" onClick={onSkip}>Пропустить</button>}
         </div>
       </div>
       <CurvedProgress progress={progress} />

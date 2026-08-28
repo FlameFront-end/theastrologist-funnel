@@ -2,14 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
 import styles from './LikertScreen.module.css'
 
-export function LikertScreen({ question, statement, points, minLabel, maxLabel, initialValue, onSelect, onBack, progress }) {
-  const timer = useRef(null)
-  const [selected, setSelected] = useState(initialValue ?? null)
+interface LikertPoint { value: string; icon: string; emphasis?: 'soft' }
+interface LikertScreenProps { question: string; statement: string; points: LikertPoint[]; minLabel: string; maxLabel: string; initialValue?: string; onSelect: (value: string) => void; onBack: () => void; progress: number }
 
-  useEffect(() => () => clearTimeout(timer.current), [])
+export function LikertScreen({ question, statement, points, minLabel, maxLabel, initialValue, onSelect, onBack, progress }: LikertScreenProps) {
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [selected, setSelected] = useState<string | null>(initialValue ?? null)
 
-  const select = value => {
-    clearTimeout(timer.current)
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
+
+  const select = (value: string) => {
+    if (timer.current) clearTimeout(timer.current)
     setSelected(value)
     timer.current = setTimeout(() => onSelect(value), 200)
   }

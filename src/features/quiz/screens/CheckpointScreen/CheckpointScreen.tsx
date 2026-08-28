@@ -13,7 +13,9 @@ const LABEL_POSITIONS = [
   { right: '5%', top: '82%', rotate: 17, opacity: 0.22, duration: 7.8, delay: 1.2 },
 ]
 
-export function CheckpointScreen({ title, subtitle, labels, image, onContinue, onBack, progress }) {
+interface CheckpointScreenProps { title: string; subtitle: string; labels: readonly string[]; image: string; onContinue: () => void; onBack: () => void; progress: number }
+
+export function CheckpointScreen({ title, subtitle, labels, image, onContinue, onBack, progress }: CheckpointScreenProps) {
   return (
     <div className={styles.root}>
       <div className={styles.originalCheckpointBackground} aria-hidden="true">

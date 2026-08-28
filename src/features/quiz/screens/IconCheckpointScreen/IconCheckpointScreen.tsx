@@ -13,7 +13,9 @@ const ICON_POSITIONS = [
 ]
 const CONCEPT_LABELS = ['Лунный знак', 'Транзиты', 'Дома', 'Асцендент', 'Солнечный знак', 'Планеты', 'Колесо натальной карты', 'Аспекты']
 
-export function IconCheckpointScreen({ title, subtitle, image, icons, concepts = false, onContinue, onBack, progress }) {
+interface IconCheckpointScreenProps { title: string; subtitle: string; image: string; icons: string[]; concepts?: boolean; onContinue: () => void; onBack: () => void; progress: number }
+
+export function IconCheckpointScreen({ title, subtitle, image, icons, concepts = false, onContinue, onBack, progress }: IconCheckpointScreenProps) {
   useEffect(() => {
     if (concepts) return undefined
     const timer = window.setTimeout(onContinue, 5500)

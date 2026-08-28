@@ -1,25 +1,28 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
 import styles from './SliderScreen.module.css'
 
-const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value))
+const clamp = (value: number, minimum: number, maximum: number) => Math.max(minimum, Math.min(maximum, value))
 
-export function SliderScreen({ question, states, initialValue, onContinue, onBack, progress }) {
+interface SliderState { label: string; value: string; image: string }
+interface SliderScreenProps { question: string; states: SliderState[]; initialValue?: string; onContinue: (value: string) => void; onBack: () => void; progress: number }
+
+export function SliderScreen({ question, states, initialValue, onContinue, onBack, progress }: SliderScreenProps) {
   const lastIndex = states.length - 1
   const initialIndex = Math.max(0, states.findIndex(state => state.value === initialValue))
-  const [index, setIndex] = useState(initialIndex || Math.floor(lastIndex / 2))
-  const trackRef = useRef(null)
+  const [index, setIndex] = useState(initialValue && initialIndex >= 0 ? initialIndex : Math.floor(lastIndex / 2))
+  const trackRef = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
   const state = states[index]
   const percentage = lastIndex > 0 ? index / lastIndex * 100 : 0
 
-  const updateFromPointer = clientX => {
+  const updateFromPointer = (clientX: number) => {
     const bounds = trackRef.current?.getBoundingClientRect()
     if (!bounds) return
     setIndex(clamp(Math.round((clientX - bounds.left) / bounds.width * lastIndex), 0, lastIndex))
   }
 
-  const handleKeyDown = event => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const direction = event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -1 : event.key === 'ArrowRight' || event.key === 'ArrowUp' ? 1 : 0
     if (!direction) return
     event.preventDefault()

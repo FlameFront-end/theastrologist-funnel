@@ -8,11 +8,11 @@
 
 .originalPalmAnalysisPhoto { display: flex; justify-content: center; padding: clamp(4px, 1dvh, 8px) 16px 0; flex: 0 0 auto; width: 100%; max-width: calc(clamp(230px, 41dvh, 345px) + 32px); margin: 0 auto; }
 
-.originalPalmResultVisual { position: relative; width: clamp(230px, 41dvh, 345px); aspect-ratio: 1 / 1.2321; overflow: hidden; border-radius: 46% 46% 32% 32%; background: rgba(23, 7, 48, .65); border: 1px solid rgba(185, 135, 251, .28); }
+.originalPalmResultVisual { position: relative; width: clamp(230px, 41dvh, 345px); aspect-ratio: 345 / 280; overflow: hidden; border-radius: 24px; background: #1a1030; border: 1px solid rgba(185, 135, 251, .28); box-shadow: 0 10px 30px rgba(10,6,24,.4); }
 
 .originalPalmResultVisual[data-compact] { width: clamp(120px, 34dvh, 280px); }
 
-.originalPalmResultVisual > img { width: 100%; height: 100%; object-fit: contain; filter: sepia(.15) hue-rotate(225deg) saturate(.85); }
+.originalPalmResultVisual > img { width: 100%; height: 100%; object-fit: cover; }
 
 .originalPalmResultVisual > svg { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 0 5px rgba(216, 167, 255, .8)); }
 

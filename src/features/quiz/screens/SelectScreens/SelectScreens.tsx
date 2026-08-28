@@ -5,29 +5,33 @@ import styles from './SelectScreens.module.css'
 const INK = '#0e0f23'
 const ACCENT = '#7f4cf2'
 
-function useDelayedSelection(stepId, options, onSelect) {
-  const timer = useRef(null)
-  const [selection, setSelection] = useState(null)
+export interface SelectOption { value: string; label: string; icon?: string; image?: string }
+export interface SelectStep { stepId: string; question: string; subtitle?: string; options: SelectOption[] }
+interface SelectScreenProps { step: SelectStep; selectedValue?: string; onSelect: (option: SelectOption) => void; onBack: () => void; progress: number }
+
+function useDelayedSelection(stepId: string, options: SelectOption[], onSelect: (option: SelectOption) => void) {
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [selection, setSelection] = useState<string | null>(null)
 
   useEffect(() => {
     setSelection(null)
   }, [stepId])
 
-  useEffect(() => () => clearTimeout(timer.current), [])
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
 
-  const select = value => {
+  const select = (value: string) => {
     const option = options.find(item => item.value === value)
     if (!option) return
 
-    clearTimeout(timer.current)
+    if (timer.current) clearTimeout(timer.current)
     setSelection(value)
     timer.current = setTimeout(() => onSelect(option), 200)
   }
 
-  return [selection, select]
+  return [selection, select] as const
 }
 
-export function PictureSelectScreen({ step, selectedValue, onSelect, onBack, progress }) {
+export function PictureSelectScreen({ step, selectedValue, onSelect, onBack, progress }: SelectScreenProps) {
   const [pendingValue, select] = useDelayedSelection(step.stepId, step.options, onSelect)
 
   return (
@@ -49,7 +53,7 @@ export function PictureSelectScreen({ step, selectedValue, onSelect, onBack, pro
                 data-active={active || undefined}
                 key={option.value}
               >
-                <img src={option.image} alt="" aria-hidden="true" />
+                <img src={option.image ?? ''} alt="" aria-hidden="true" />
                 <span className={styles.originalPictureShade} />
                 <span className={styles.originalPictureLabel}>{option.label}</span>
               </button>
@@ -62,7 +66,7 @@ export function PictureSelectScreen({ step, selectedValue, onSelect, onBack, pro
   )
 }
 
-function TextSelectArrow({ color }) {
+function TextSelectArrow({ color }: { color: string }) {
   return (
     <svg className={styles.originalTextArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M16 7.83333L0.5 7.83333C1.29667 7.83333 2.28667 7.35417 3.10333 6.855C4.1925 6.18917 5.1425 5.31667 5.9375 4.31667C6.55583 3.54167 7.16667 2.61833 7.16667 2M0.5 7.83333C1.29667 7.83333 2.2875 8.3125 3.10333 8.81167C4.1925 9.47833 5.1425 10.3508 5.9375 11.3492C6.55583 12.125 7.16667 13.05 7.16667 13.6667" stroke={color} strokeWidth="1.2" />
@@ -70,7 +74,7 @@ function TextSelectArrow({ color }) {
   )
 }
 
-export function TextSelectScreen({ step, selectedValue, onSelect, onBack, progress }) {
+export function TextSelectScreen({ step, selectedValue, onSelect, onBack, progress }: SelectScreenProps) {
   const [pendingValue, select] = useDelayedSelection(step.stepId, step.options, onSelect)
 
   return (
@@ -110,7 +114,7 @@ export function TextSelectScreen({ step, selectedValue, onSelect, onBack, progre
   )
 }
 
-export function ChipSelectScreen({ step, selectedValue, onSelect, onBack, progress }) {
+export function ChipSelectScreen({ step, selectedValue, onSelect, onBack, progress }: SelectScreenProps) {
   const [pendingValue, select] = useDelayedSelection(step.stepId, step.options, onSelect)
 
   return (

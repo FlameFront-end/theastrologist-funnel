@@ -24,8 +24,16 @@ export interface QuizAnswers {
   birthTime?: string
   birthPlace?: BirthPlaceValue
   photo?: File | null
+  photoPath?: string
+  palmCameraAborted?: 'yes'
   fullName?: string
   email?: string
+  consentGivenAt?: string
+  consentVersion?: string
+  marketingConsent?: boolean
+  readerPatterns?: 'yes' | 'no'
+  readerSense?: 'yes' | 'no'
+  readerOpenUp?: 'yes' | 'no'
   tier?: string
   [key: string]: unknown
 }

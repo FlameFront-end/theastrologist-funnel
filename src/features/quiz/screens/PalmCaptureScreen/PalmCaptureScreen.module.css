@@ -1,0 +1,12 @@
+.screen { position: fixed; inset: 0; z-index: 20; overflow: hidden; background: #0a0a0a; color: #fff; font-family: var(--font-poppins), var(--font-manrope), system-ui, sans-serif; }
+.screen video { width: 100%; height: 100%; object-fit: cover; }
+.close { position: absolute; z-index: 2; top: max(18px, env(safe-area-inset-top)); left: 18px; width: 44px; height: 44px; border-radius: 50%; background: rgba(0,0,0,.52); color: #fff; font-size: 30px; cursor: pointer; }
+.guide { position: absolute; inset: 15% 12% 24%; display: grid; place-items: center; border: 2px solid rgba(181,125,255,.85); border-radius: 48% 48% 38% 38%; box-shadow: 0 0 28px rgba(181,125,255,.45); }
+.guide span { width: 55%; height: 75%; border: 1px dashed rgba(255,255,255,.65); border-radius: 45% 45% 36% 36%; }
+.copy { position: absolute; left: 24px; right: 24px; bottom: 150px; text-align: center; text-shadow: 0 1px 5px #000; }
+.copy strong { font-size: 15px; }
+.copy p { margin: 8px auto 0; max-width: 360px; font-size: 13px; line-height: 1.45; }
+.capture { position: absolute; left: 50%; bottom: 54px; width: 72px; height: 72px; transform: translateX(-50%); border: 4px solid #fff; border-radius: 50%; padding: 5px; cursor: pointer; }
+.capture span { display: block; width: 100%; height: 100%; border-radius: 50%; background: #fff; }
+.capture:disabled { opacity: .5; }
+.skip { position: absolute; right: 20px; bottom: 68px; min-height: 44px; padding: 0 12px; color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }

@@ -2,7 +2,7 @@ const ARC_PATH = 'M0 60 Q187.5 -12 375 60'
 import styles from './QuizChrome.module.css'
 
 const ARC_LENGTHS = (() => {
-  const y = value => 60 * ((1 - value) ** 2 + value ** 2) - 24 * value * (1 - value)
+  const y = (value: number) => 60 * ((1 - value) ** 2 + value ** 2) - 24 * value * (1 - value)
   const lengths = [0]
 
   for (let index = 1; index <= 64; index += 1) {
@@ -27,7 +27,7 @@ const STARS = [
   { x: 272, y: 66, radius: 0.7, opacity: 0.5 },
 ]
 
-export function QuizNavigation({ onBack, backLabel = 'Назад' }) {
+export function QuizNavigation({ onBack, backLabel = 'Назад' }: { onBack: () => void; backLabel?: string }) {
   return (
     <nav className={styles.originalQuizNav}>
       <button type="button" onClick={onBack} aria-label={backLabel} className={styles.tap}>
@@ -50,7 +50,7 @@ export function QuizNavigation({ onBack, backLabel = 'Назад' }) {
   )
 }
 
-function progressAtDistance(progress) {
+function progressAtDistance(progress: number) {
   const position = 0.08 + 0.84 * Math.max(0, Math.min(1, progress)) ** 0.7
   const scaled = 64 * Math.max(0, Math.min(1, position))
   const index = Math.min(63, Math.floor(scaled))
@@ -59,7 +59,7 @@ function progressAtDistance(progress) {
   return { position, distance }
 }
 
-export function CurvedProgress({ progress }) {
+export function CurvedProgress({ progress }: { progress: number }) {
   const { position, distance } = progressAtDistance(progress)
   const top = (60 * ((1 - position) ** 2 + position ** 2) - 24 * position * (1 - position)) / 72 * 100
 

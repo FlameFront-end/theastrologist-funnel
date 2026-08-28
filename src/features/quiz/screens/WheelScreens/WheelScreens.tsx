@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
+import type { BirthDateValue } from '../../../../domain/quiz'
 import styles from './WheelScreens.module.css'
 
-const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value))
+const clamp = (value: number, minimum: number, maximum: number) => Math.max(minimum, Math.min(maximum, value))
 const ZODIAC_ICONS = ['aries', 'taurus', 'gemini', 'cancer', 'libra'].map(icon => `/images/quiz/q15-zo-${icon}.webp`)
 
-function WheelColumn({ items, index, onChange, onTouch, touched, placeholder, width, radius, ariaLabel }) {
-  const scroller = useRef(null)
-  const settleTimer = useRef(null)
-  const frame = useRef(null)
+interface WheelColumnProps { items: string[]; index: number; onChange: (index: number) => void; onTouch: () => void; touched: boolean; placeholder: string; width: number | string; radius: string; ariaLabel: string }
+
+function WheelColumn({ items, index, onChange, onTouch, touched, placeholder, width, radius, ariaLabel }: WheelColumnProps) {
+  const scroller = useRef<HTMLDivElement>(null)
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const frame = useRef<number | null>(null)
   const [visibleIndex, setVisibleIndex] = useState(index)
 
   useEffect(() => {
@@ -18,16 +21,16 @@ function WheelColumn({ items, index, onChange, onTouch, touched, placeholder, wi
   }, [index])
 
   useEffect(() => () => {
-    cancelAnimationFrame(frame.current)
-    clearTimeout(settleTimer.current)
+    if (frame.current !== null) cancelAnimationFrame(frame.current)
+    if (settleTimer.current) clearTimeout(settleTimer.current)
   }, [])
 
   const handleScroll = () => {
     const element = scroller.current
     if (!element) return
-    cancelAnimationFrame(frame.current)
+    if (frame.current !== null) cancelAnimationFrame(frame.current)
     frame.current = requestAnimationFrame(() => setVisibleIndex(clamp(Math.round(element.scrollTop / 40), 0, items.length - 1)))
-    clearTimeout(settleTimer.current)
+    if (settleTimer.current) clearTimeout(settleTimer.current)
     settleTimer.current = setTimeout(() => {
       const nextIndex = clamp(Math.round(element.scrollTop / 40), 0, items.length - 1)
       onChange(nextIndex)
@@ -67,18 +70,20 @@ function WheelColumn({ items, index, onChange, onTouch, touched, placeholder, wi
   )
 }
 
-function WheelAction({ disabled, onClick }) {
+function WheelAction({ disabled, onClick }: { disabled: boolean; onClick: () => void }) {
   return <div className={styles.originalWheelAction}><button type="button" disabled={disabled} onClick={onClick}><span>ПРОДОЛЖИТЬ</span><b aria-hidden="true">→</b></button></div>
 }
 
-export function DateWheelScreen({ question, subtitle, initialValue, onContinue, onBack, progress }) {
+interface DateWheelScreenProps { question: string; subtitle?: string; initialValue?: BirthDateValue; onContinue: (value: BirthDateValue) => void; onBack: () => void; progress: number }
+
+export function DateWheelScreen({ question, subtitle, initialValue, onContinue, onBack, progress }: DateWheelScreenProps) {
   const now = new Date()
   const currentYear = now.getFullYear()
   const years = Array.from({ length: currentYear - 1919 }, (_, index) => 1920 + index)
   const months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
   const initialYear = Number(initialValue?.year) || 2000
   const [yearIndex, setYearIndex] = useState(clamp(years.indexOf(initialYear), 0, years.length - 1))
-  const savedMonthIndex = months.indexOf(initialValue?.month)
+  const savedMonthIndex = months.indexOf(initialValue?.month ?? '')
   const [monthIndex, setMonthIndex] = useState(savedMonthIndex >= 0 ? savedMonthIndex : 5)
   const daysInMonth = new Date(years[yearIndex], monthIndex + 1, 0).getDate()
   const days = Array.from({ length: daysInMonth }, (_, index) => String(index + 1).padStart(2, '0'))
@@ -105,7 +110,9 @@ export function DateWheelScreen({ question, subtitle, initialValue, onContinue, 
   )
 }
 
-export function TimeWheelScreen({ question, subtitle, initialValue, onContinue, onBack, progress }) {
+interface TimeWheelScreenProps { question: string; subtitle?: string; initialValue?: string; onContinue: (value: string) => void; onBack: () => void; progress: number }
+
+export function TimeWheelScreen({ question, subtitle, initialValue, onContinue, onBack, progress }: TimeWheelScreenProps) {
   const match = typeof initialValue === 'string' ? initialValue.match(/^(\d{2}):(\d{2})$/) : null
   const hours = Array.from({ length: 24 }, (_, index) => String(index).padStart(2, '0'))
   const minutes = Array.from({ length: 60 }, (_, index) => String(index).padStart(2, '0'))

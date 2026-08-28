@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
+import type { BirthDateValue } from '../../../../domain/quiz'
 import styles from './BirthRevealScreen.module.css'
 
-export function BirthRevealScreen({ birthDate, birthTime, onContinue, onBack, progress }) {
+interface BirthRevealScreenProps { birthDate?: BirthDateValue; birthTime?: string; onContinue: () => void; onBack: () => void; progress: number }
+
+export function BirthRevealScreen({ birthDate, birthTime, onContinue, onBack, progress }: BirthRevealScreenProps) {
   useEffect(() => {
     const timer = window.setTimeout(onContinue, 4000)
     return () => window.clearTimeout(timer)

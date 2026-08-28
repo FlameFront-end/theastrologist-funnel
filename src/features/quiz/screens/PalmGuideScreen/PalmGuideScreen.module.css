@@ -48,3 +48,5 @@
 .originalPalmCamera span { font-size: clamp(13px, calc(.72dvh + 8.91px), 15px); font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: .45px; }
 
 .originalPalmCamera b { color: #fff; font-size: 20px; }
+.originalPalmSkip { width: 100%; min-height: 44px; padding: 10px 20px; border: 0; border-radius: 100px; color: #cec1d6; font-size: clamp(13px, calc(.72dvh + 8.91px), 15px); font-weight: 400; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.originalPalmUpload:disabled { cursor: wait; opacity: .7; }

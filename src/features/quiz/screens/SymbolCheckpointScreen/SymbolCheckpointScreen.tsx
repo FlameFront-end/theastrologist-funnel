@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import { CurvedProgress, QuizNavigation } from '../QuizChrome/QuizChrome'
 import styles from './SymbolCheckpointScreen.module.css'
 
-export function SymbolCheckpointScreen({ title, subtitle, image, symbols, onContinue, onBack, progress }) {
+interface SymbolCheckpointScreenProps { title: string; subtitle: string; image: string; symbols: string[]; onContinue: () => void; onBack: () => void; progress: number }
+
+export function SymbolCheckpointScreen({ title, subtitle, image, symbols, onContinue, onBack, progress }: SymbolCheckpointScreenProps) {
   useEffect(() => {
     const timer = window.setTimeout(onContinue, 4000)
     return () => window.clearTimeout(timer)
