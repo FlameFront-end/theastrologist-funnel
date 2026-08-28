@@ -1,0 +1,43 @@
+.original-palm-screen { isolation: isolate; }
+
+.originalPalmResultRoot { position: relative; width: 100%; height: 100dvh; font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif; color: #fff; overflow: hidden; }
+
+.originalPalmResultBackground { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29, 9, 44, .9), rgba(47, 10, 94, .92)), url('/images/quiz/checkpoint-bg.webp') center/cover; }
+
+.originalPalmResultScreen { position: relative; z-index: 1; width: 100%; max-width: 480px; margin: 0 auto; height: 100%; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; }
+
+.originalPalmAnalysisPhoto { display: flex; justify-content: center; padding: clamp(4px, 1dvh, 8px) 16px 0; flex: 0 0 auto; width: 100%; max-width: calc(clamp(230px, 41dvh, 345px) + 32px); margin: 0 auto; }
+
+.originalPalmResultVisual { position: relative; width: clamp(230px, 41dvh, 345px); aspect-ratio: 1 / 1.2321; overflow: hidden; border-radius: 46% 46% 32% 32%; background: rgba(23, 7, 48, .65); border: 1px solid rgba(185, 135, 251, .28); }
+
+.originalPalmResultVisual[data-compact] { width: clamp(120px, 34dvh, 280px); }
+
+.originalPalmResultVisual > img { width: 100%; height: 100%; object-fit: contain; filter: sepia(.15) hue-rotate(225deg) saturate(.85); }
+
+.originalPalmResultVisual > svg { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 0 5px rgba(216, 167, 255, .8)); }
+
+.originalPalmResultVisual > svg path { stroke-dasharray: 300; animation: original-palm-lines 2.6s ease-out both; }
+
+.originalPalmAnalysisCopy { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(8px, 3dvh, 24px); padding: clamp(8px, 3dvh, 24px) 20px clamp(10px, 4dvh, 32px); min-height: 0; }
+
+.originalPalmSpinner { width: clamp(64px, min(40vw, 18.4dvh), 155px); height: auto; animation: original-orbit-rotate 14s linear infinite; }
+
+.originalPalmAnalysisCopy h2 { min-height: clamp(44px, 10dvh, 80px); width: min(100%, 267px); margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(15px, min(5.4vw, 3.1dvh), 25px); line-height: 1.13; letter-spacing: -0.01em; color: #fff; text-align: center; }
+
+.originalPalmRevealBody { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(12px, 5.7dvh, 48px); padding: clamp(4px, .95dvh, 8px) 0 clamp(10px, 3.8dvh, 32px); min-height: 0; }
+
+.originalPalmRevealCopy { display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.7dvh, 14px); padding: 0 20px; width: 100%; }
+
+.originalPalmRevealCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(16px, min(5.4vw, 2.7dvh), 25px); line-height: 1.13; letter-spacing: -0.01em; color: #fff; text-align: center; max-width: 320px; }
+
+.originalPalmRevealSpinner { width: clamp(64px, min(40vw, 18.4dvh), 155px); height: auto; animation: original-orbit-rotate 10s linear infinite; }
+
+.originalPalmRevealCopy p { margin: 0; font-size: clamp(12px, 1.85dvh, 14px); font-weight: 300; line-height: 1.5; color: #cec1d6; text-align: center; max-width: 335px; }
+
+@media (prefers-reduced-motion: reduce) {
+.originalPalmSpinner, .originalPalmRevealSpinner { animation: none; }
+}
+
+@keyframes original-orbit-rotate { to { transform: rotate(360deg); } }
+
+@keyframes original-palm-lines { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }

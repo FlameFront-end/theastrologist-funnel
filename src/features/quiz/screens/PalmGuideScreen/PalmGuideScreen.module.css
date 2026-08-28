@@ -1,0 +1,50 @@
+.originalPalmScreen { isolation: isolate; }
+.originalPalmActions button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.originalPalmScreen { position: relative; width: 100%; max-width: 480px; margin: 0 auto; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif; color: #0e0f23; }
+
+.originalPalmExamples { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(8px, calc(5.8dvh - 25px), 24px); padding: clamp(4px, calc(1.45dvh - 4.23px), 8px) 20px clamp(8px, calc(2.9dvh - 8.47px), 16px); }
+
+.originalPalmExamples h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(15px, min(5.4vw, calc(3.62dvh - 5.58px)), 25px); line-height: 1.13; letter-spacing: -0.01em; color: #0e0f23; text-align: center; }
+
+.originalPalmCorrectCard { display: flex; align-items: center; justify-content: center; gap: 7px; padding: clamp(8px, calc(2.9dvh - 8.47px), 16px) 16px; border-radius: 24px; background: rgba(255, 255, 255, .8); width: 235px; }
+
+.originalPalmCorrectCard > div:last-child { display: flex; flex-direction: column; align-items: center; gap: 1px; width: 75px; }
+
+.originalPalmCorrectCard span { font-size: clamp(12px, calc(1.45dvh + 3.77px), 16px); font-weight: 300; }
+
+.originalPalmWrongRow { display: flex; align-items: center; justify-content: center; gap: clamp(5px, calc(1.09dvh - 1.19px), 8px); }
+
+.originalHandExample { position: relative; width: clamp(34px, calc(8.33dvh - 13.3px), 57px); height: clamp(44px, calc(11.59dvh - 21.9px), 76px); border-radius: 8px; border: 3px solid #51536c; flex-shrink: 0; overflow: hidden; }
+
+.originalHandExample[data-large] { width: clamp(35px, calc(8.7dvh - 14.4px), 59px); height: clamp(46px, calc(11.59dvh - 19.8px), 78px); }
+
+.originalHandExample img { position: absolute; inset: 10%; width: 80%; height: 80%; object-fit: contain; transform-origin: center; }
+
+.originalHandExample > span { position: absolute; left: 3px; top: 3px; line-height: 0; }
+
+.originalHandExample > span svg { width: clamp(14px, calc(2.17dvh + 1.65px), 20px); height: auto; }
+
+.originalPalmPanel { position: relative; width: 100%; border-radius: 150px 150px 0 0; overflow: hidden; padding-top: clamp(6px, calc(6.52dvh - 31px), 24px); display: flex; flex-direction: column; align-items: center; gap: clamp(8px, calc(5.8dvh - 25px), 24px); flex: 0 1 auto; min-height: 0; background: linear-gradient(180deg, rgba(47, 10, 94, .94), #13002d), url('/images/quiz/checkpoint-bg.webp') center/cover; }
+
+.originalPalmTips { position: relative; z-index: 1; display: flex; flex-direction: column; gap: clamp(6px, calc(2.17dvh - 6.35px), 12px); width: 289px; max-width: 100%; padding: clamp(6px, calc(6.52dvh - 31px), 24px) 16px; overflow-y: auto; }
+
+.originalPalmTips strong { font-size: clamp(13px, calc(1.09dvh + 6.81px), 16px); line-height: clamp(17px, calc(2.54dvh + 2.57px), 24px); font-weight: 600; color: #fff; text-align: center; }
+
+.originalPalmTips > div { display: flex; gap: 8px; align-items: flex-start; }
+
+.originalPalmTips svg { flex-shrink: 0; width: clamp(16px, calc(2.9dvh - .5px), 24px); height: auto; }
+
+.originalPalmTips p { margin: 0; flex: 1 1 0; min-width: 0; font-size: clamp(12px, calc(.72dvh + 7.91px), 14px); font-weight: 300; line-height: clamp(16px, calc(1.81dvh + 5.72px), 21px); color: #fff; }
+
+.originalPalmActions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: clamp(6px, calc(1.45dvh - 2.23px), 10px); width: 100%; padding: 0 50px clamp(8px, calc(4.35dvh - 16.7px), 20px); }
+
+.originalPalmUpload { background: none; border: 0; min-height: 44px; padding: clamp(4px, calc(1.45dvh - 4.23px), 8px) 12px; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 300; color: #fff; text-decoration: underline; }
+
+.originalPalmActions > p { margin: -6px 0 0; color: #ffb4b4; font-size: 12px; text-align: center; }
+
+.originalPalmCamera { width: 100%; min-height: 44px; display: flex; gap: 15px; align-items: center; justify-content: center; padding: clamp(9px, calc(1.45dvh + .77px), 13px) 20px; border-radius: 100px; border: 2px solid rgba(185, 135, 251, .59); background: linear-gradient(202deg, #4f397e 16%, #704ebf 49%, #402b6f 85%); cursor: pointer; }
+
+.originalPalmCamera span { font-size: clamp(13px, calc(.72dvh + 8.91px), 15px); font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: .45px; }
+
+.originalPalmCamera b { color: #fff; font-size: 20px; }

@@ -1,0 +1,42 @@
+.originalBirthRevealBody { isolation: isolate; }
+
+.originalSelectScreen {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #0e0f23;
+}
+
+.originalLoadingTrack { flex-shrink: 0; height: 6px; margin: 8px 50px 12px; border-radius: 100px; overflow: hidden; background: rgba(185, 135, 251, .22); border: 1px solid rgba(185, 135, 251, .35); }
+
+.originalLoadingTrack span { display: block; height: 100%; border-radius: 100px; background: linear-gradient(90deg, #4f397e 0%, #704ebf 50%, #b987fb 100%); animation: original-loading-fill 4s linear forwards; }
+
+.originalBirthRevealBody { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: safe center; gap: clamp(10px, calc(8.61dvh - 38.91px), 40px); padding: 8px 16px 16px; min-height: 0; overflow-y: auto; overflow-x: hidden; }
+
+.originalBirthRevealCopy { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 0 4px; }
+
+.originalBirthRevealCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(20px, 5.4vw, 25px); line-height: 1.13; letter-spacing: -0.01em; color: #0e0f23; text-align: center; }
+
+.originalBirthRevealCopy h2 span { color: #7f4cf2; }
+
+.originalBirthRevealCopy p { margin: 0; font-size: 14px; font-weight: 300; line-height: 21px; color: #51536c; text-align: center; }
+
+.originalBirthOrbit { position: relative; width: min(82vw, clamp(168px, calc(71.01dvh - 235.32px), 364px)); aspect-ratio: 1; flex-shrink: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+
+.originalBirthOrbit img:first-child { width: 75.7%; height: 75.7%; object-fit: contain; border-radius: 50%; }
+
+.originalBirthOrbit img:last-child { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; animation: original-orbit-rotate 90s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+.originalBirthOrbit img:last-child { animation: none; }
+}
+
+@keyframes original-loading-fill { from { width: 0; } to { width: 100%; } }
+
+@keyframes original-orbit-rotate { to { transform: rotate(360deg); } }

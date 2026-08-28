@@ -1,0 +1,49 @@
+.tap {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.originalLikertCell:focus-visible { outline: 2px solid #7f4cf2; outline-offset: -2px; }
+
+.originalSelectScreen {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #0e0f23;
+}
+
+.originalLikertBody { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: safe center; gap: clamp(16px, 3vh, 24px); padding: clamp(12px, 2vh, 16px) 20px clamp(14px, 2vh, 24px); }
+
+.originalLikertCopy { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 4px; }
+
+.originalLikertCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(20px, 5.4vw, 25px); line-height: 1.13; letter-spacing: -0.01em; color: #0e0f23; text-align: center; }
+
+.originalLikertCopy p { margin: 0; font-size: 14px; font-weight: 300; line-height: 21px; color: #51536c; text-align: center; }
+
+.originalLikertControl { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+
+.originalLikertScale { display: flex; width: 100%; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, .66); border: 1px solid rgba(98, 57, 192, .14); box-shadow: 0 6px 18px rgba(80, 50, 130, .1); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+
+.originalLikertCell { flex: 1 1 0; min-width: 0; min-height: 44px; height: clamp(56px, 8.4dvh, 68px); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; border: 0; border-inline-start: 1px solid rgba(98, 57, 192, .12); background: transparent; transition: background .2s ease, box-shadow .2s ease; }
+
+.originalLikertCell:first-child { border-inline-start: 0; }
+
+.originalLikertCell[data-active] { background: linear-gradient(180deg, rgba(185, 135, 251, .26) 0%, rgba(127, 76, 242, .16) 100%); box-shadow: inset 0 0 0 1px rgba(98, 57, 192, .22); }
+
+.originalLikertCell > span { font-size: 30px; line-height: 1; display: block; filter: grayscale(.25); opacity: .82; transition: filter .22s ease, opacity .22s ease, transform .22s ease; }
+
+.originalLikertCell > span[data-soft] { font-size: 24px; }
+
+.originalLikertCell[data-active] > span { filter: none; opacity: 1; transform: scale(1.12); }
+
+.originalLikertLabels { display: flex; justify-content: space-between; gap: 24px; width: 100%; }
+
+.originalLikertLabels span { flex: 1 1 0; min-width: 0; font-size: 12px; font-weight: 300; line-height: 1.3; color: #51536c; text-transform: uppercase; letter-spacing: .02em; overflow-wrap: break-word; }
+
+.originalLikertLabels span:last-child { text-align: end; }

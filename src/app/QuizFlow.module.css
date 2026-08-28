@@ -1,0 +1,124 @@
+.root {
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  transition: background .35s ease;
+  font-family: Inter, 'Inter Fallback', -apple-system, system-ui, sans-serif;
+  font-weight: 500;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+.lightTheme {
+  background: linear-gradient(180deg, #f0edfa 0%, #c0a2e5 100%);
+}
+
+.darkTheme {
+  color: #fff;
+  background: #1d092c;
+}
+
+.startTheme {
+  color: #f5f2ff;
+  background: #0a0614;
+}
+
+.startTheme::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 62% at 50% 6%, rgba(120, 86, 196, .30) 0%, rgba(120, 86, 196, 0) 58%),
+    radial-gradient(90% 55% at 50% 44%, rgba(88, 52, 168, .34) 0%, rgba(45, 24, 92, 0) 62%),
+    radial-gradient(120% 80% at 50% 108%, rgba(74, 41, 150, .30) 0%, rgba(10, 6, 20, 0) 60%),
+    linear-gradient(180deg, #0d0820 0%, #0a0614 52%, #08040f 100%);
+}
+
+.screen {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100dvh - 53px);
+  animation: screenIn .4s cubic-bezier(.25, .8, .25, 1) both;
+}
+
+.startScreen {
+  min-height: calc(100dvh - 101px);
+}
+
+.startNav {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 460px);
+  margin: 0 auto;
+}
+
+.startNav nav {
+  padding: clamp(5px, calc(2.17dvh - 7.31px), 11px) 16px clamp(2px, calc(.72dvh - 2.08px), 4px);
+}
+
+.startNav button,
+.startNav nav > span:last-child {
+  width: 35px;
+  height: 35px;
+}
+
+.screenBack {
+  animation-name: screenBack;
+}
+
+.today {
+  position: relative;
+  z-index: 4;
+  height: clamp(26px, calc(5.07dvh - 2.79px), 40px);
+  min-height: 26px;
+  border-top: 1px solid rgba(159, 120, 232, .2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: rgba(245, 242, 255, .7);
+  font-size: 12px;
+  line-height: 16px;
+  background: rgba(38, 20, 84, .5);
+  backdrop-filter: blur(6px);
+}
+
+.today b {
+  color: #f5f2ff;
+  font-weight: 600;
+}
+
+.today span {
+  color: #f1cf7c;
+  font-size: 16px;
+  transform: rotate(10.85deg);
+}
+
+@keyframes screenIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes screenBack {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 410px) {
+  .screen {
+    min-height: calc(100dvh - 60px);
+  }
+
+  .startScreen {
+    min-height: calc(100dvh - 108px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .startNav {
+    width: min(100%, 620px);
+  }
+}

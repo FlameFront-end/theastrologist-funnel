@@ -1,0 +1,50 @@
+.root { isolation: isolate; }
+
+.root {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.originalCheckpointBackground { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+.originalCheckpointBackground > div { position: absolute; inset: 0; background: linear-gradient(180deg, #1d092c 0%, #2f0a5e 100%); }
+
+.originalCheckpointBackground img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .2; }
+
+.originalCheckpointBackground span { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(38, 24, 71, .3) 0%, rgba(28, 16, 58, .3) 100%); }
+
+.originalCheckpointScreen { position: relative; z-index: 1; width: 100%; max-width: 480px; margin: 0 auto; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+
+.originalCheckpointCopy { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 4px 16px 8px; }
+
+.originalCheckpointCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(20px, 5.4vw, 25px); line-height: 1.13; letter-spacing: -0.01em; color: #fff; text-align: center; }
+
+.originalCheckpointCopy p { margin: 0; font-size: 14px; font-weight: 300; line-height: 21px; color: #cec1d6; text-align: center; }
+
+.originalCheckpointPerson { height: clamp(280px, 44vh, 400px); width: auto; max-width: 78%; object-fit: cover; border-radius: 48% / 42%; }
+
+.originalSymbolArt { position: relative; width: 100%; flex: 1 1 auto; display: flex; align-items: center; justify-content: center; padding: 20px 0; min-height: 0; }
+
+.originalSymbolWindow { position: absolute; left: 0; right: 0; top: 54%; transform: translateY(-50%); height: 87px; overflow: hidden; z-index: 2; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+
+.originalSymbolTrack { display: flex; gap: 16px; width: max-content; height: 100%; align-items: center; animation: original-symbol-scroll 28.8s linear infinite; }
+
+.originalSymbolCard { flex-shrink: 0; width: 79px; height: 79px; border-radius: 12px; padding: 8px; border: 1px solid #6239c0; background: linear-gradient(228deg, rgba(41, 35, 79, .28) 4%, rgba(67, 47, 125, .28) 47%, rgba(40, 33, 78, .28) 95%); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; }
+
+.originalSymbolCard img { width: 100%; height: 100%; object-fit: contain; }
+
+.originalLoadingTrack { flex-shrink: 0; height: 6px; margin: 8px 50px 12px; border-radius: 100px; overflow: hidden; background: rgba(185, 135, 251, .22); border: 1px solid rgba(185, 135, 251, .35); }
+
+.originalLoadingTrack span { display: block; height: 100%; border-radius: 100px; background: linear-gradient(90deg, #4f397e 0%, #704ebf 50%, #b987fb 100%); animation: original-loading-fill 4s linear forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+.originalSymbolTrack { animation: none; }
+}
+
+@keyframes original-symbol-scroll { to { transform: translateX(-760px); } }
+
+@keyframes original-loading-fill { from { width: 0; } to { width: 100%; } }

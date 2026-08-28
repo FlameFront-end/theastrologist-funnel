@@ -1,0 +1,210 @@
+.genderStep {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  height: calc(100dvh - 89px);
+  min-height: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f5f2ff;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  text-align: center;
+}
+
+.ratingRow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: clamp(6px, 1.4dvh, 14px);
+  padding: 5px 16px;
+  border: 1px solid rgba(201, 177, 255, .24);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  color: rgba(245, 242, 255, .7);
+}
+
+.ratingRow { max-width: calc(100% - 32px); white-space: normal; }
+.ratingStars { flex: 0 0 auto; display: flex; align-items: center; }
+.ratingRow b { color: #f5f2ff; font-weight: 400; }
+.ratingRow i { width: 4px; height: 4px; border-radius: 50%; background: rgba(245, 242, 255, .5); color: transparent; overflow: hidden; }
+
+.proof {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 8px;
+  color: rgba(245, 242, 255, .7);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.proof span { margin: 0; color: #c9b1ff; font-size: 20px; line-height: 20px; }
+.proof b { color: #c9b1ff; font-weight: 600; }
+
+.heroSpacer,
+.constellation {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: clamp(60px, 16dvh, 150px);
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.constellation svg { width: min(96vw, 900px); height: 100%; overflow: visible; }
+
+.constellationLine,
+.constellationGlow {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.constellationLine {
+  stroke: url('#constellation-stroke');
+  stroke-width: 1.4;
+  stroke-opacity: .9;
+}
+
+.constellationGlow {
+  stroke: #f1cf7c;
+  stroke-width: 5.2;
+  stroke-opacity: .26;
+  filter: url('#constellation-glow');
+}
+
+.constellationFocal {
+  filter: drop-shadow(0 0 2.5px rgba(241, 207, 124, .85));
+}
+
+.genderLabel {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 32px);
+  padding: clamp(6px, calc(1.3dvh - 2.2px), 10px) clamp(16px, 4.6vw, 20px);
+  border: 1px solid rgba(201, 177, 255, .46);
+  border-radius: 100px;
+  background: rgba(28, 16, 58, .78);
+  box-shadow: 0 0 26px rgba(150, 110, 220, .24);
+  backdrop-filter: blur(6px);
+  color: #f5f2ff;
+  font-size: clamp(13px, calc(.72dvh + 8.92px), 15px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .06em;
+}
+
+.promptText { max-width: 235px; text-wrap: balance; }
+.promptArrow { flex: 0 0 auto; display: flex; transform: rotate(-90deg); }
+
+.genderGrid {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  width: calc(100% - 32px);
+  margin-top: clamp(7px, calc(1.81dvh - 3.28px), 12px);
+}
+
+.genderGrid button {
+  flex: 1 1 0;
+  min-width: 0;
+  height: clamp(150px, 29dvh, 262px);
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0;
+  border: 1px solid rgba(122, 74, 210, .45);
+  border-radius: 20px;
+  background: linear-gradient(210deg, #1f1540 0%, #191033 55%, #140d28 100%);
+  box-shadow: 0 6px 20px rgba(8, 4, 18, .55);
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.genderGrid button:hover { transform: translateY(-2px); }
+.genderGrid button:focus-visible { outline: 2px solid #d3bdff; outline-offset: 2px; }
+
+.genderGrid img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: clamp(6px, 1.1dvh, 12px) clamp(6px, 1.1dvh, 12px) clamp(30px, 5dvh, 44px);
+}
+
+.genderGrid button::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 46%;
+  background: linear-gradient(180deg, rgba(20, 13, 40, 0) 0%, rgba(20, 13, 40, .72) 52%, rgba(18, 11, 36, .95) 100%);
+  pointer-events: none;
+}
+
+.genderGrid b {
+  position: absolute;
+  z-index: 1;
+  inset-inline: 0;
+  bottom: clamp(9px, 1.6dvh, 16px);
+  padding: 0 6px;
+  color: #f5f2ff;
+  font-size: clamp(15px, calc(.9dvh + 9.4px), 18px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 10px rgba(6, 3, 14, .8);
+}
+
+.minute {
+  flex: 0 0 auto;
+  margin-top: clamp(7px, calc(1.81dvh - 3.28px), 12px);
+  margin-bottom: clamp(28px, 12dvh, 110px);
+  color: rgba(245, 242, 255, .7);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stars { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.star { position: absolute; border-radius: 50%; opacity: var(--star-opacity); animation: twinkle ease-in-out infinite; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: calc(var(--star-opacity) * .45); transform: scale(.85); }
+  50% { opacity: var(--star-opacity); transform: scale(1); }
+}
+
+@media (max-width: 360px) {
+  .ratingRow { padding-inline: 10px; gap: 4px; font-size: 10px; }
+  .proof { gap: 4px; font-size: 10px; }
+}
+
+@media (min-width: 1024px) {
+  .genderStep { max-width: 620px; }
+}

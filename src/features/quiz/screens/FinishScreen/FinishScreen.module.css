@@ -1,0 +1,40 @@
+.questionShell {
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 80px 16px 70px;
+  text-align: center;
+}
+
+.questionShell h1 {
+  font-size: clamp(24px, 6.5vw, 31px);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  margin: 0 auto 20px;
+  max-width: 490px;
+}
+
+.questionShell > p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(23, 17, 38, .65);
+  margin: 0 auto 26px;
+  max-width: 460px;
+}
+
+.finishSymbol {
+  font-size: 90px;
+  color: #b88e47;
+  filter: drop-shadow(0 0 25px rgba(157, 96, 219, .38));
+  margin-bottom: 20px;
+}
+
+@media (max-width: 410px) {
+  .questionShell {
+    padding: 80px 16px 60px;
+  }
+
+  .questionShell h1 {
+    font-size: 23px;
+  }
+}

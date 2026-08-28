@@ -1,0 +1,56 @@
+.tap {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.root { isolation: isolate; }
+.originalCheckpointAction button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.root {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.originalCheckpointBackground { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+.originalCheckpointBackground > div { position: absolute; inset: 0; background: linear-gradient(180deg, #1d092c 0%, #2f0a5e 100%); }
+
+.originalCheckpointBackground img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .2; }
+
+.originalCheckpointBackground span { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(38, 24, 71, .3) 0%, rgba(28, 16, 58, .3) 100%); }
+
+.originalCheckpointScreen { position: relative; z-index: 1; width: 100%; max-width: 480px; margin: 0 auto; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+
+.originalCheckpointCopy { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 4px 16px 8px; }
+
+.originalCheckpointCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(20px, 5.4vw, 25px); line-height: 1.13; letter-spacing: -0.01em; color: #fff; text-align: center; }
+
+.originalCheckpointCopy p { margin: 0; font-size: 14px; font-weight: 300; line-height: 21px; color: #cec1d6; text-align: center; }
+
+.originalCheckpointArt { position: relative; width: 100%; flex: 1 1 auto; display: flex; align-items: center; justify-content: center; padding: 20px 0; min-height: 0; }
+
+.originalCheckpointPerson { height: clamp(280px, 44vh, 400px); width: auto; max-width: 78%; object-fit: cover; border-radius: 48% / 42%; }
+
+.originalCheckpointLabelPosition { position: absolute; z-index: 2; pointer-events: none; animation: original-checkpoint-float var(--float-duration) ease-in-out var(--float-delay) infinite; }
+
+.originalCheckpointLabel { padding: 5px 10px; border-radius: 18px; border: 1px solid #6239c0; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); white-space: nowrap; font-size: 12px; font-weight: 300; color: #fff; box-shadow: 0 4px 14px rgba(10, 6, 24, .35); }
+
+@media (prefers-reduced-motion: reduce) {
+.originalCheckpointLabelPosition { animation: none; }
+}
+
+.originalCheckpointAction { padding: 8px 50px 12px; }
+
+.originalCheckpointAction button { width: 100%; display: flex; gap: 15px; align-items: center; justify-content: center; padding: 13px 20px; border-radius: 100px; border: 2px solid rgba(185, 135, 251, .59); background: linear-gradient(202deg, #4f397e 16%, #704ebf 49%, #402b6f 85%); cursor: pointer; font-family: inherit; }
+
+.originalCheckpointAction span { font-size: 15px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: .45px; }
+
+.originalCheckpointArrow { transform: rotate(180deg); }
+
+:global([dir='rtl']) .originalCheckpointArrow { transform: none; }
+
+@keyframes original-checkpoint-float { 50% { translate: 0 -6px; } }

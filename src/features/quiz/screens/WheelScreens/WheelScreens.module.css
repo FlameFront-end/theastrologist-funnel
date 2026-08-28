@@ -1,0 +1,51 @@
+.originalWheelScroll:focus-visible { outline: 2px solid #7f4cf2; outline-offset: 3px; }
+.originalWheelAction button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.screen { position: relative; width: 100%; max-width: 480px; margin: 0 auto; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif; color: #0e0f23; }
+
+.originalDateBody, .originalTimeBody { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; justify-content: safe center; }
+
+.originalDateBody { gap: clamp(14px, 5.3dvh, 40px); padding: clamp(8px, 2.1dvh, 16px) 20px clamp(10px, 3.2dvh, 24px); }
+
+.originalTimeBody { gap: clamp(12px, 5dvh, 40px); padding: clamp(6px, 2dvh, 16px) 20px clamp(8px, 3dvh, 24px); }
+
+.originalWheelCopy { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.9dvh, 14px); padding: 0 4px; }
+.originalDateIntro { width: 100%; display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.9dvh, 14px); }
+.originalZodiacIcons { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(8px, 1.9dvh, 14px); padding: clamp(2px, .55dvh, 4px) 0; }
+.originalZodiacIcons > div { width: clamp(34px, 6.7dvh, 50px); height: clamp(34px, 6.7dvh, 50px); flex: 0 0 auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(228deg, rgba(41,35,79,.8) 4%, rgba(67,47,125,.8) 47%, rgba(40,33,78,.8) 95%); backdrop-filter: blur(5px); transform: translateY(-3px); box-shadow: 0 4px 14px rgba(10,6,24,.28); }
+.originalZodiacIcons > div[data-lowered] { transform: translateY(9px); }
+.originalZodiacIcons img { width: clamp(22px, 4.3dvh, 32px); height: clamp(22px, 4.3dvh, 32px); object-fit: contain; }
+
+.originalWheelCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(17px, min(5.4vw, 3.3dvh), 25px); line-height: 1.13; letter-spacing: -0.01em; color: #0e0f23; text-align: center; }
+
+.originalWheelCopy p { margin: 0; font-size: clamp(12px, 1.9dvh, 14px); font-weight: 300; line-height: 1.5; color: #51536c; text-align: center; }
+
+.originalDateColumns, .originalTimeColumns { display: flex; align-items: stretch; justify-content: center; width: 100%; flex: 0 0 auto; }
+
+.originalDateColumns { max-width: 340px; }
+
+.originalTimeColumns { max-width: 320px; }
+
+.originalWheelColumn { position: relative; height: 200px; background: rgba(255, 255, 255, .3); overflow: hidden; }
+
+.originalWheelHighlight { position: absolute; left: 8px; right: 8px; top: 80px; height: 40px; border-radius: 8px; background: radial-gradient(ellipse at center, rgba(156, 135, 204, .3) 0%, rgba(98, 57, 192, .32) 100%); box-shadow: 0 0 6px rgba(98, 57, 192, .2); pointer-events: none; }
+
+.originalWheelScroll { position: relative; height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; padding-top: 80px; padding-bottom: 80px; scrollbar-width: none; }
+
+.originalWheelScroll::-webkit-scrollbar { display: none; }
+
+.originalWheelScroll > div { height: 40px; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #51536c; font-size: 14px; font-weight: 300; line-height: 1; transition: opacity .15s ease, color .15s ease, font-size .15s ease; white-space: nowrap; }
+
+.originalWheelScroll > div[data-active] { color: #0e0f23; font-size: 16px; }
+
+.originalWheelScroll > div[data-far] { opacity: .5; }
+
+.originalWheelAction { flex: 0 0 auto; padding: clamp(6px, 1.1dvh, 8px) 50px clamp(10px, 3.2dvh, 24px); }
+
+.originalWheelAction button { width: 100%; min-height: 44px; display: flex; gap: 15px; align-items: center; justify-content: center; padding: clamp(10px, 1.7dvh, 13px) 20px; border-radius: 100px; border: 2px solid rgba(185, 135, 251, .59); background: linear-gradient(202deg, #4f397e 16%, #704ebf 49%, #402b6f 85%); cursor: pointer; font-family: inherit; transition: opacity .2s ease; }
+
+.originalWheelAction button:disabled { cursor: default; opacity: .45; }
+
+.originalWheelAction span { font-size: clamp(13px, 2dvh, 15px); font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: .45px; }
+
+.originalWheelAction b { color: #fff; font-size: 20px; font-weight: 300; }

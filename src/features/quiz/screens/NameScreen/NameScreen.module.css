@@ -1,0 +1,90 @@
+.screen {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #0e0f23;
+}
+
+.questionShell {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 34px 16px 70px;
+  text-align: center;
+}
+
+.questionShell h1 {
+  font-size: clamp(24px, 6.5vw, 31px);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  margin: 0 auto 20px;
+  max-width: 490px;
+}
+
+.questionShell > p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(23, 17, 38, .65);
+  margin: 0 auto 26px;
+  max-width: 420px;
+}
+
+.textField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  margin-top: 42px;
+}
+
+.textField span {
+  font-size: 12px;
+  color: #69547f;
+  margin-left: 8px;
+}
+
+.textField input {
+  width: 100%;
+  height: 58px;
+  border: 1px solid rgba(73, 39, 112, .22);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .76);
+  padding: 0 17px;
+  outline: none;
+  box-shadow: 0 8px 20px rgba(70, 39, 107, .06);
+}
+
+.textField input:focus {
+  border-color: #845abe;
+  background: #fff;
+}
+
+.textField input:focus-visible {
+  outline: 2px solid #7f4cf2;
+  outline-offset: 2px;
+}
+
+@media (max-width: 410px) {
+  .questionShell {
+    padding: 27px 16px 60px;
+  }
+
+  .questionShell h1 {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 760px) {
+  .questionShell {
+    padding-top: 45px;
+  }
+}

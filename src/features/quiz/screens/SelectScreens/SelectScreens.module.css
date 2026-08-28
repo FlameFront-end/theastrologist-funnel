@@ -1,0 +1,155 @@
+.tap {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.screen { isolation: isolate; }
+.originalPictureOption:focus-visible, .originalTextOption:focus-visible { outline: 2px solid #7f4cf2; outline-offset: 2px; }
+
+.screen {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  color: #0e0f23;
+}
+
+.originalPictureContent {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  gap: clamp(14px, 3vh, 24px);
+  padding: clamp(8px, 2vh, 16px) 16px clamp(10px, 2vh, 20px);
+}
+
+.originalPictureContent h2,
+.originalQuestionCopy h2 {
+  margin: 0;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.13;
+  letter-spacing: -0.01em;
+  color: #0e0f23;
+  text-align: center;
+}
+
+.originalPictureContent h2 {
+  flex: 0 0 auto;
+  font-size: clamp(20px, 5.4vw, 25px);
+  max-width: 340px;
+}
+
+.originalPictureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(8px, 1.6vh, 12px);
+  width: 100%;
+  max-width: min(312px, calc((100dvh - 250px) / 3 * 2));
+  margin: 0 auto;
+}
+
+.originalPictureOption {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(14, 15, 35, 0.12);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  cursor: pointer;
+  font-family: inherit;
+  background: #1a1430;
+}
+
+.originalPictureOption[data-active] {
+  border-color: #7f4cf2;
+  box-shadow: 0 0 0 1px #7f4cf2, 0 8px 24px rgba(127, 76, 242, 0.4);
+  transform: translateY(-2px);
+}
+
+.originalPictureOption img,
+.originalPictureShade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.originalPictureOption img { object-fit: cover; }
+
+.originalPictureShade { background: linear-gradient(to top, rgba(10, 11, 46, 0.89) 16%, rgba(10, 11, 46, 0.24) 29%, rgba(10, 11, 46, 0) 39%); }
+
+.originalPictureLabel { position: absolute; left: 8px; right: 8px; bottom: 10px; font-size: 14px; font-weight: 600; line-height: 16px; color: #fff; text-align: center; }
+
+.originalTextArrow { transform: rotate(180deg); flex-shrink: 0; }
+
+:global([dir='rtl']) .originalTextArrow { transform: none; }
+
+.originalTextContent {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  gap: clamp(6px, calc(4.55dvh - 19.83px), 24px);
+  padding: clamp(2px, calc(2.95dvh - 14.77px), 12px) clamp(12px, calc(5.71vw - 6.27px), 16px) clamp(2px, calc(4.17dvh - 21.69px), 20px);
+}
+
+.originalQuestionCopy { display: flex; flex-direction: column; align-items: center; gap: clamp(2px, calc(3.62dvh - 18.56px), 12px); padding: 0 4px; }
+
+.originalQuestionCopy h2 { font-size: min(clamp(20px, 5.4vw, 25px), max(17px, calc(1.47dvh + 8.65px))); }
+
+.originalQuestionCopy p { margin: 0; font-size: clamp(12px, calc(0.72dvh + 7.92px), 14px); font-weight: 300; line-height: 1.5; color: #51536c; text-align: center; }
+
+.originalTextOptions { display: flex; flex-direction: column; gap: clamp(4px, calc(2.22dvh - 8.61px), 14px); width: 100%; }
+
+.originalTextOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 2vw, 8px);
+  width: 100%;
+  min-height: clamp(44px, calc(6.69dvh + 6px), 74px);
+  padding: clamp(4px, calc(1.61dvh - 5.15px), 16px) clamp(10px, calc(8vw - 15.6px), 16px);
+  border-radius: 18px;
+  text-align: start;
+  cursor: pointer;
+  font-family: inherit;
+  border: 2px solid rgba(154, 38, 255, 0.12);
+  background: #f6f4f6;
+  box-shadow: 0 1px 2px rgba(14, 15, 35, 0.04);
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.originalTextOption[data-active] { border-color: transparent; background: linear-gradient(194deg, #29234f 4%, #432f7d 47%, #28214e 95%); box-shadow: 0 8px 24px rgba(127, 76, 242, 0.35); transform: translateY(-1px); }
+
+.originalTextOptionCopy { display: flex; align-items: center; gap: clamp(6px, 2vw, 8px); flex: 1 1 0; min-width: 0; }
+
+.originalTextIcon { font-size: min(clamp(20px, 5.5vw, 22px), max(16px, calc(1.97dvh + 4.82px))); line-height: 1; flex-shrink: 0; }
+
+.originalTextLabel { flex: 1 1 0; min-width: 0; font-size: min(clamp(15px, 4vw, 16px), max(13px, calc(0.94dvh + 7.67px))); font-weight: 300; line-height: 1.25; color: #0e0f23; }
+
+.originalTextOption[data-active] .originalTextLabel { color: #fff; }
+
+.originalChipContent { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: safe center; gap: clamp(8px, calc(5.8dvh - 24.95px), 24px); padding: clamp(4px, calc(4.35dvh - 20.71px), 16px) 20px clamp(8px, calc(3.22dvh - 10.3px), 16.88px); }
+.originalChipCopy { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 4px; }
+.originalChipCopy h2 { margin: 0; font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(18px, min(5.4vw, calc(1.11dvh + 11.69px)), 25px); line-height: 1.13; letter-spacing: -.01em; color: #0e0f23; text-align: center; }
+.originalChipCopy p { margin: 0; font-size: 14px; font-weight: 300; line-height: 21px; color: #51536c; text-align: center; }
+.originalChipOptions { display: flex; flex-wrap: wrap; gap: clamp(6px, calc(.72dvh + 1.92px), 8px); justify-content: center; width: 100%; }
+.originalChipOption { display: inline-flex; align-items: center; gap: 2px; max-width: 100%; min-height: 37px; padding-block: 4px; padding-inline: 6px 10px; border-radius: 18px; cursor: pointer; font-family: inherit; border: 1px solid rgba(154,38,255,.12); background: #f6f4f6; backdrop-filter: blur(5px); box-shadow: 0 1px 2px rgba(14,15,35,.04); transition: background .2s ease, box-shadow .2s ease, transform .2s ease; }
+.originalChipOption[data-active] { border-color: transparent; background: linear-gradient(194deg, #29234f 4%, #432f7d 47%, #28214e 95%); box-shadow: 0 8px 22px rgba(127,76,242,.32); transform: translateY(-1px); }
+.originalChipIcon { flex-shrink: 0; padding: 4px; font-size: 18px; line-height: 1; }
+.originalChipLabel { min-width: 0; color: #0e0f23; font-size: clamp(13px, calc(.36dvh + 10.96px), 14px); font-weight: 300; line-height: clamp(19.5px, calc(.54dvh + 16.44px), 21px); text-align: start; overflow-wrap: break-word; }
+.originalChipOption[data-active] .originalChipLabel { color: #fff; }
